@@ -1,9 +1,37 @@
-import React from 'react'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import Form from "../components/Form";
 
 const NewClient = () => {
-  return (
-    <div>NewClient</div>
-  )
-}
+  const navigate = useNavigate();
 
-export default NewClient
+  return (
+    <>
+      <h1 className="font-black text-4xl text-blue-900">New Client</h1>
+      <p className="mt-3">Complete all fields</p>
+
+      <div className="flex justify-end">
+        <button
+          className="bg-blue-700 text-white px-3 py-1 font-bold uppercase rounded"
+          onClick={() => navigate(-1)}
+        >
+          Back
+        </button>
+      </div>
+
+      <div className="bg-white shadow rounded-md md:w-3/4 mx-auto px-5 py-10 mt-10">
+        <form action="">
+          <Form />
+
+          <input
+            type="submit"
+            className="mt-5 w-full bg-blue-700 text-white px-3 py-1 font-bold uppercase rounded"
+            value="Save"
+          />
+        </form>
+      </div>
+    </>
+  );
+};
+
+export default NewClient;

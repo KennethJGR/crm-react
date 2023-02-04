@@ -62,10 +62,7 @@ const Index = () => {
           </thead>
           <tbody>
             {data.map((client) => (
-             <Client  key={client.id} 
-             client={client}
-             />
-
+              <Client key={client.id} client={client} />
             ))}
           </tbody>
         </table>
