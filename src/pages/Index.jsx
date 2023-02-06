@@ -49,7 +49,7 @@ const Index = () => {
   return (
     <>
       <h1 className="font-black text-4xl text-blue-900">Clients</h1>
-      <p className="mt-3">Manage your Clients</p>
+      <p className="mt-3 font-bold">Manage your Clients</p>
 
       {data.length ? (
         <table className="mt-5 table-auto bg-white w-full">
