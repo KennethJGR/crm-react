@@ -1,13 +1,14 @@
 import React from "react";
-import { useNavigate, Form, useActionData } from "react-router-dom";
+import { useNavigate, Form, useActionData, redirect } from "react-router-dom";
 import Forms from "../components/Forms";
 import Error from "../components/Error";
+import { createClient } from "../data/Clients";
 
 export async function action({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
 
-const email = formData.get("email");
+  const email = formData.get("email");
 
   //validation
   const errors = [];
@@ -16,7 +17,9 @@ const email = formData.get("email");
     errors.push("All fields are required");
   }
 
-  let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
+  let regex = new RegExp(
+    "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
+  );
 
   if (!regex.test(email)) {
     errors.push("Invalid email");
@@ -25,6 +28,10 @@ const email = formData.get("email");
   if (Object.keys(errors).length) {
     return errors;
   }
+
+  await createClient(data);
+
+  return redirect("/");
 }
 
 const NewClient = () => {
@@ -49,8 +56,7 @@ const NewClient = () => {
         {errors?.length &&
           errors.map((error, index) => <Error key={index}>{error} </Error>)}
 
-        <Form method="POST"
-        noValidate>
+        <Form method="POST" noValidate>
           <Forms />
 
           <input

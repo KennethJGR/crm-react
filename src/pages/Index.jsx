@@ -5,6 +5,7 @@ import { getClients } from "../data/Clients";
 
 export function loader() {
   const data = getClients();
+
   return data;
 }
 
