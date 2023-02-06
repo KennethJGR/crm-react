@@ -1,0 +1,39 @@
+{
+    "clients": [
+        {
+            "id": 1,
+            "name": "Mario",
+            "phone": 102013313,
+            "email": "mario@mario.com",
+            "company": "ReactDom"
+        },
+        {
+            "id": 2,
+            "name": "Karen",
+            "phone": 138198313,
+            "email": "karen@karen.com",
+            "company": "ReactDom"
+        },
+        {
+            "id": 3,
+            "name": "John",
+            "phone": 31983913,
+            "email": "john@jhon.com",
+            "company": "ReactDom"
+        },
+        {
+            "id": 4,
+            "name": "Michael",
+            "phone": 319381983,
+            "email": "michael@michael.com",
+            "company": "ReactDom"
+        },
+        {
+            "id": 5,
+            "name": "James",
+            "phone": 1398198938,
+            "email": "james@james.com",
+            "company": "ReactDom"
+        }
+    ]
+}
