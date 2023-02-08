@@ -2,10 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Layout from "./components/Layout";
-import NewClient,{action as newClientAction} from "./pages/NewClient";
+import NewClient, { action as newClientAction } from "./pages/NewClient";
 import Index, { loader as clientLoader } from "./pages/Index";
 import "./index.css";
 import ErrorPage from "./pages/ErrorPage";
+import EditClient, {
+  loader as editClientLoader,
+  action as editClientAction,
+} from "./pages/EditClient";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +26,14 @@ const router = createBrowserRouter([
         path: "/clients/new",
         element: <NewClient />,
         action: newClientAction,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/clients/edit/:id",
+        element: <EditClient />,
+        loader: editClientLoader,
+        errorElement: <ErrorPage />,
+        action: editClientAction,
       },
     ],
   },
