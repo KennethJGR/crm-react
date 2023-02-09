@@ -21,6 +21,9 @@ export async function loader({ params }) {
 
     return client;
 }
+
+
+
 export async function action({ params, request }) {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
@@ -50,6 +53,7 @@ export async function action({ params, request }) {
 
     return redirect("/");
 }
+
 
 const EditClient = () => {
     const navigate = useNavigate();
